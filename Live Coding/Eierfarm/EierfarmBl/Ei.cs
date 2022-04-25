@@ -2,7 +2,8 @@
 {
     public class Ei
     {
-        public Ei()
+
+        public Ei(Henne mutter)
         {
             Random random = new Random();
             this.Gewicht = random.Next(45, 81);
@@ -13,6 +14,8 @@
             // this.Farbe = (EiFarbe)42; Geht!
 
             this.Farbe = (EiFarbe)random.Next(Enum.GetNames<EiFarbe>().Count()); // DirectCast, schmeißt Exception, wenn der Cast fehlschlägt.
+
+            this.Mutter = mutter;
         }
 
         // Auto-Property
@@ -49,6 +52,8 @@
         }
 
         public EiFarbe Farbe { get; set; }
+
+        public Henne Mutter { get; set; }
     }
 
     public enum EiFarbe

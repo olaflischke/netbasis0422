@@ -6,8 +6,69 @@
     xmlns:local="clr-namespace:EierfarmUi"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
-    Width="800"
-    Height="450"
+    Width="350"
+    Height="300"
     mc:Ignorable="d">
-    <Grid />
+    <Canvas>
+        <Button x:Name="btnNeuesHuhn"
+            Canvas.Left="238"
+            Canvas.Top="10"
+            Width="80"
+            Content="Neues Huhn" Click="btnNeuesHuhn_Click" />
+        <ComboBox
+            x:Name="cbxTiere"
+            Canvas.Left="81"
+            Canvas.Top="9"
+            Width="150"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center" DisplayMemberPath="Name" />
+        <TextBox
+            Canvas.Left="81"
+            Canvas.Top="43"
+            Width="150"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{Binding ElementName=cbxTiere, Path=SelectedItem.Name}" />
+        <TextBox
+            Canvas.Left="81"
+            Canvas.Top="66"
+            Width="150"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Text="{Binding ElementName=cbxTiere, Path=SelectedItem.Gewicht}" />
+        <ListBox
+            Canvas.Left="81"
+            Canvas.Top="90"
+            Width="150"
+            Height="162"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            ItemsSource="{Binding ElementName=cbxTiere, Path=SelectedItem.Eier}" />
+        <Label
+            Canvas.Left="38"
+            Canvas.Top="39"
+            Content="Name" />
+        <Label
+            Canvas.Left="24"
+            Canvas.Top="62"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Content="Gewicht" />
+        <Button
+            Canvas.Left="238"
+            Canvas.Top="117"
+            Width="80"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Content="Füttern" Click="btnFuettern_Click" />
+        <Button x:Name="btnEiLegen"
+            
+            Canvas.Left="238"
+            Canvas.Top="142"
+            Width="80"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Ei legen" Click="btnEiLegen_Click" />
+
+    </Canvas>
 </Window>
