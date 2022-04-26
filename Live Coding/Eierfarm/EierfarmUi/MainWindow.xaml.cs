@@ -30,32 +30,54 @@ namespace EierfarmUi
         {
             Henne henne = new Henne("Neues Huhn");
 
-            henne.EigenschaftGeaendert += this.Henne_EigenschaftGeaendert;
+            //henne.EigenschaftGeaendert += this.Gefluegel_EigenschaftGeaendert;
 
             cbxTiere.Items.Add(henne);
             cbxTiere.SelectedItem = henne;
         }
 
+        private void btnNeueGans_Click(object sender, RoutedEventArgs e)
+        {
+            Gans gans = new Gans();
+
+            //gans.EigenschaftGeaendert += this.Gefluegel_EigenschaftGeaendert;
+
+            cbxTiere.Items.Add(gans);
+            cbxTiere.SelectedItem = gans;
+        }
+
+        private void Gefluegel_EigenschaftGeaendert(object? sender, GefluegelEventArgs e)
+        {
+            if (sender is Gefluegel tier)
+            {
+                MessageBox.Show($"Tier {tier.Name} hat Eigenschaft { e.GeaenderteProperty} geändert.");
+            }
+        }
+
         private void Henne_EigenschaftGeaendert(object? sender, EventArgs e)
         {
-            // MessageBox.Show($"Tier {((Henne)sender).Name} hat Eigenschaft geämdert.");
+            MessageBox.Show($"Tier {((Henne)sender).Name} hat Eigenschaft geämdert.");
         }
 
         private void btnFuettern_Click(object sender, RoutedEventArgs e)
         {
-            Henne henne = cbxTiere.SelectedItem as Henne; // SafeCast - liefert null, wenn Cast fehlschlägt.
-            if (henne != null)
+            Tier tier = cbxTiere.SelectedItem as Tier; // SafeCast - liefert null, wenn Cast fehlschlägt.
+            if (tier != null)
             {
-                henne.Fressen();
+                tier.Fressen();
+
             }
         }
 
         private void btnEiLegen_Click(object sender, RoutedEventArgs e)
         {
-            if (cbxTiere.SelectedItem is Henne henne)
+            if (cbxTiere.SelectedItem is IEileger tier)
             {
-                henne.EiLegen();
+                tier.EiLegen();
+
+
             }
         }
+
     }
 }

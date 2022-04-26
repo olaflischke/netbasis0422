@@ -69,6 +69,11 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Content="Ei legen" Click="btnEiLegen_Click" />
+        <Button x:Name="btnNeueGans"
+            Canvas.Left="238"
+            Canvas.Top="35"
+            Width="80"
+            Content="Neue Gans" Click="btnNeueGans_Click" HorizontalAlignment="Center" VerticalAlignment="Top" />
 
     </Canvas>
 </Window>

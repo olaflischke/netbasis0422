@@ -3,7 +3,7 @@
     public class Ei
     {
 
-        public Ei(Henne mutter)
+        public Ei(IEileger mutter)
         {
             Random random = new Random();
             this.Gewicht = random.Next(45, 81);
@@ -15,6 +15,15 @@
 
             this.Farbe = (EiFarbe)random.Next(Enum.GetNames<EiFarbe>().Count()); // DirectCast, schmeißt Exception, wenn der Cast fehlschlägt.
 
+            this.Mutter = mutter;
+        }
+
+        public Ei(int gewichtsobergrenze, int gewichtsuntergrenze, IEileger mutter)
+        {
+            Random random = new Random();
+            this.Gewicht = random.Next(gewichtsuntergrenze, gewichtsobergrenze);
+
+            this.Farbe = (EiFarbe)random.Next(Enum.GetNames<EiFarbe>().Count()); // DirectCast, schmeißt Exception, wenn der Cast fehlschlägt.
             this.Mutter = mutter;
         }
 
@@ -53,7 +62,7 @@
 
         public EiFarbe Farbe { get; set; }
 
-        public Henne Mutter { get; set; }
+        public IEileger Mutter { get; set; }
     }
 
     public enum EiFarbe
