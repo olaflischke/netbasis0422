@@ -19,7 +19,7 @@ namespace EierfarmBl
         public event EventHandler<GefluegelEventArgs> EigenschaftGeaendert;
 
         // Event aus INotifyPropertyChanged
-        // Aktualiseren der WPF-UI, wenn sich Elemente im Hintergrund ändern
+        // Aktualisieren der WPF-UI, wenn sich Elemente im Hintergrund ändern
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private void OnPropertyChanged([CallerMemberName]string propertyName="")

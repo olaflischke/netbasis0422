@@ -10,18 +10,21 @@
     Height="300"
     mc:Ignorable="d">
     <Canvas>
-        <Button x:Name="btnNeuesHuhn"
+        <Button
+            x:Name="btnNeuesHuhn"
             Canvas.Left="238"
             Canvas.Top="10"
             Width="80"
-            Content="Neues Huhn" Click="btnNeuesHuhn_Click" />
+            Click="btnNeuesHuhn_Click"
+            Content="Neues Huhn" />
         <ComboBox
             x:Name="cbxTiere"
             Canvas.Left="81"
             Canvas.Top="9"
             Width="150"
             HorizontalAlignment="Left"
-            VerticalAlignment="Center" DisplayMemberPath="Name" />
+            VerticalAlignment="Center"
+            DisplayMemberPath="Name" />
         <TextBox
             Canvas.Left="81"
             Canvas.Top="43"
@@ -60,20 +63,40 @@
             Width="80"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
-            Content="Füttern" Click="btnFuettern_Click" />
-        <Button x:Name="btnEiLegen"
-            
+            Click="btnFuettern_Click"
+            Content="Füttern" />
+        <Button
+            x:Name="btnEiLegen"
             Canvas.Left="238"
             Canvas.Top="142"
             Width="80"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
-            Content="Ei legen" Click="btnEiLegen_Click" />
-        <Button x:Name="btnNeueGans"
+            Click="btnEiLegen_Click"
+            Content="Ei legen" />
+        <Button
+            x:Name="btnNeueGans"
             Canvas.Left="238"
             Canvas.Top="35"
             Width="80"
-            Content="Neue Gans" Click="btnNeueGans_Click" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Click="btnNeueGans_Click"
+            Content="Neue Gans" />
+        <Button x:Name="btnSpeichern"
+            Canvas.Left="238"
+            Canvas.Top="231"
+            Width="80"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Speichern"  Click="btnSpeichern_Click"/>
+        <Button x:Name="btnLaden"
+            Canvas.Left="238"
+            Canvas.Top="206"
+            Width="80"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="Laden" Click="btnLaden_Click" />
 
     </Canvas>
 </Window>

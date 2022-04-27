@@ -10,6 +10,11 @@ namespace EierfarmBl
         const int Gewichtsuntergrenze = 45;
         const int Gewichtsobergrenze = 81;
 
+        private Huehnerei() : base()
+        {
+
+        }
+
         public Huehnerei(Henne mutter) : base(Gewichtsobergrenze, Gewichtsuntergrenze, mutter)
         {
             //this.Gewicht=(new Random()).Next(Gewichtsuntergrenze, Gewichtsobergrenze);

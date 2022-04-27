@@ -1,6 +1,8 @@
 ﻿using EierfarmBl;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
 
 namespace EierfarmUi
 {
@@ -74,10 +77,39 @@ namespace EierfarmUi
             if (cbxTiere.SelectedItem is IEileger tier)
             {
                 tier.EiLegen();
-
-
             }
         }
 
+        private void btnSpeichern_Click(object sender, RoutedEventArgs e)
+        {
+            if (cbxTiere.SelectedItem is IEileger tier)
+            {
+            // Benutzer nach Speicherort fragen
+                SaveFileDialog saveFileDialog = new SaveFileDialog()
+                {
+                    RestoreDirectory = true,
+                    Filter = "Henne|*.hn|Gans|*.gs|Schnabeltier|*.st|Alles|*.*",
+                    FilterIndex = 1
+                };
+
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    // Tier als XML dort speichern
+                    XmlSerializer serializer = new XmlSerializer(tier.GetType());
+                    StreamWriter writer= new StreamWriter(saveFileDialog.FileName);
+                    serializer.Serialize(writer, tier);
+
+                    MessageBox.Show("Tier gespeichert.");
+                }
+
+            }
+
+
+        }
+
+        private void btnLaden_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

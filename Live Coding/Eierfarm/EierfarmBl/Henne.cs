@@ -2,6 +2,10 @@
 {
     public class Henne : Gefluegel
     {
+        private Henne():base("")
+        {
+
+        }
 
         public Henne(string name) : base(name)
         {
@@ -21,7 +25,8 @@
         {
             if (this.Gewicht > 1500)
             {
-                Huehnerei ei = new Huehnerei(this);
+                //Huehnerei ei = new Huehnerei(this);
+                Ei ei= new Ei(this);
                 this.Gewicht -= ei.Gewicht;
                 this.Eier.Add(ei);
             }

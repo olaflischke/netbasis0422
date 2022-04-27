@@ -1,7 +1,12 @@
-﻿namespace EierfarmBl
+﻿using System.Xml.Serialization;
+
+namespace EierfarmBl
 {
     public class Ei
     {
+        protected Ei()
+        { }
+
 
         public Ei(IEileger mutter)
         {
@@ -29,7 +34,7 @@
 
         // Auto-Property
         // Property mit durch den Compiler automatisch generiertem Backing Field
-        public int Id { get; private set; }
+        public int Id { get;  set; }
 
         public DateTime Legendatum { get; set; }
 
@@ -42,6 +47,7 @@
         // Ei ei = new Ei();
 
         // Öffenticher Teil der Property
+        [XmlElement(ElementName = "Weight")]
         public double Gewicht
         {
             // Getter
@@ -60,8 +66,10 @@
             }
         }
 
+        [XmlAttribute(AttributeName = "Color")]
         public EiFarbe Farbe { get; set; }
 
+        [XmlIgnore]
         public IEileger Mutter { get; set; }
     }
 

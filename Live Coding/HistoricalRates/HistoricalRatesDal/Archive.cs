@@ -19,10 +19,16 @@ namespace HistoricalRatesDal
 
             XDocument document = XDocument.Load(url);
 
+            // Deklarativ
             var qDays = from xe in document.Root.Descendants()
-                        where xe.Name.LocalName == "Cube" && xe.Attributes().Count() == 1
+                        where xe.Name.LocalName == "Cube" && xe.Attributes().Any(at => CheckAttribute(at, "time"))
                         // Projektion
-                        select new TradingDay() { Date = Convert.ToDateTime(xe.Attribute("time").Value) };
+                        select new TradingDay(xe); // { Date = Convert.ToDateTime(xe.Attribute("time").Value) };
+
+            // Lambda
+            var qDaysMeth = document.Root.Descendants()
+                                        .Where(xe => xe.Name.LocalName == "Cube" && xe.Attributes().Any(at => at.Name == "time"))
+                                        .Select(xe => new TradingDay(xe) { Date = Convert.ToDateTime(xe.Attribute("time").Value) });
 
             //foreach (XElement item in qDays)
             //{
@@ -34,6 +40,18 @@ namespace HistoricalRatesDal
             // Alternative: days.AddRange(qDays);
 
             return days;
+        }
+
+        private bool CheckAttribute(XAttribute at, string name)
+        {
+            {
+                if (at.Name == name)
+                {
+                    return true;
+                }
+                return false;
+            }
+
         }
 
         private List<Customer> GetCustomers()
