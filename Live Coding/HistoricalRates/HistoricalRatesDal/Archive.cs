@@ -7,6 +7,12 @@ namespace HistoricalRatesDal
         public Archive(string url)
         {
             this.TradingDays = GetData(url);
+            SaveToDb();
+        }
+
+        private void SaveToDb()
+        {
+            
         }
 
         public List<TradingDay> TradingDays { get; set; }
@@ -23,7 +29,7 @@ namespace HistoricalRatesDal
             var qDays = from xe in document.Root.Descendants()
                         where xe.Name.LocalName == "Cube" && xe.Attributes().Any(at => CheckAttribute(at, "time"))
                         // Projektion
-                        select new TradingDay(xe); // { Date = Convert.ToDateTime(xe.Attribute("time").Value) };
+                        select new TradingDay(xe);
 
             // Lambda
             var qDaysMeth = document.Root.Descendants()

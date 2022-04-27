@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Serialization;
+using System.Xml;
 
 namespace EierfarmUi
 {
@@ -96,7 +97,11 @@ namespace EierfarmUi
                 {
                     // Tier als XML dort speichern
                     XmlSerializer serializer = new XmlSerializer(tier.GetType());
-                    StreamWriter writer= new StreamWriter(saveFileDialog.FileName);
+                    //StreamWriter writer= new StreamWriter(saveFileDialog.FileName);
+
+                    XmlTextWriter writer = new XmlTextWriter(saveFileDialog.FileName, Encoding.UTF8);
+                    writer.Formatting = Formatting.Indented;    
+
                     serializer.Serialize(writer, tier);
 
                     MessageBox.Show("Tier gespeichert.");
